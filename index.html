@@ -17,6 +17,7 @@
 <script>
     const api_url = 'https://api.wheretheiss.at/v1/satellites/25544'
     let data;
+    const api2_url = 'https://data.mongodb-api.com/app/data-yjaic/endpoint/data/v1'
 
     async function showData(){
         const response = await fetch(api_url);
@@ -24,6 +25,9 @@
         const {latitude, longitude} = data;
         document.getElementById('lat').textContent = latitude
         document.getElementById('long').textContent = longitude
+        response = await fetch(api2_url)
+        data = await response.json();
+        console.log(data)
     }
     showData();
 </script>
